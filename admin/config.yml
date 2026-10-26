@@ -1,0 +1,34 @@
+backend:
+  name: github
+  repo: tonicfair189/alatike-website-
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "properties"
+    label: "Property listings"
+    files:
+      - name: "listings"
+        label: "All listings"
+        file: "content/properties.json"
+        format: "json"
+        fields:
+          - label: "Listings"
+            name: "listings"
+            widget: "list"
+            summary: "{{fields.title}} — {{fields.location}}"
+            fields:
+              - { label: "Property title", name: "title", widget: "string" }
+              - { label: "Published on website", name: "published", widget: "boolean", default: true }
+              - { label: "Status", name: "status", widget: "select", options: ["For sale", "For rent", "Let agreed", "Sold"], default: "For sale" }
+              - { label: "Location", name: "location", widget: "string" }
+              - { label: "Price", name: "price", widget: "string", hint: "Example: ₦85,000,000 or ₦2,500,000 per year" }
+              - { label: "Property type", name: "property_type", widget: "string", required: false, hint: "Example: Detached house, apartment, land" }
+              - { label: "Bedrooms", name: "bedrooms", widget: "number", value_type: "int", min: 0, required: false }
+              - { label: "Bathrooms", name: "bathrooms", widget: "number", value_type: "int", min: 0, required: false }
+              - { label: "Size", name: "size", widget: "string", required: false, hint: "Example: 4 bedrooms or 500 sqm" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Main photo", name: "image", widget: "image" }
+              - { label: "Photo description for accessibility", name: "image_alt", widget: "string", required: false }
